@@ -3,7 +3,6 @@ import { test, expect } from '@playwright/test';
 test.describe('Поиск элементов по роли "button"', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('https://osstep.github.io/locator_getbyrole');
-    //await page.getByRole('');
   });
 
   // Задание 1: Найди кнопку "Основное действие" используя getByRole с указанием роли и текста
@@ -12,7 +11,6 @@ test.describe('Поиск элементов по роли "button"', () => {
     const primaryButton = page.locator('[data-todo="primaryButton"]'); // TODO(student): замените на корректный локатор
     await expect(primaryButton).toBeVisible();
     await expect(primaryButton).toHaveClass(/primary-btn/);
-    //await page.getByRole('button', { name: 'dasd' });
   });
 
   // Задание 2: Найди неактивную кнопку используя getByRole с указанием disabled состояния
