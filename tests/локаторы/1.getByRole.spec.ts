@@ -12,10 +12,7 @@ test.describe('Поиск элементов по роли "button"', () => {
     const primaryButton = page.locator('[data-todo="primaryButton"]'); // TODO(student): замените на корректный локатор
     await expect(primaryButton).toBeVisible();
     await expect(primaryButton).toHaveClass(/primary-btn/);
-<<<<<<< HEAD
     await page.getByRole('button', { name: 'dasd' });
-=======
->>>>>>> 3fefe51a7b4b33a4093174383d3f2e0b0e1b1769
   });
 
   // Задание 2: Найди неактивную кнопку используя getByRole с указанием disabled состояния
