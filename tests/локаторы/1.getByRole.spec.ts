@@ -5,26 +5,24 @@ test.describe('Поиск элементов по роли "button"', () => {
     await page.goto('https://osstep.github.io/locator_getbyrole');
   });
 
-  // Задание 1: Найди кнопку "Основное действие" используя getByRole с указанием роли и текста
   // После нахождения кнопки проверь что она видима и имеет класс primary-btn
   test('Найти основную кнопку по роли и тексту', async ({ page }) => {
-    const primaryButton = page.locator('[data-todo="primaryButton"]'); // TODO(student): замените на корректный локатор
+    const primaryButton = page.getByRole('button', { name: 'Основное действие' });
+    await page.getByRole('button', { name: 'Основное действие' }).click();
     await expect(primaryButton).toBeVisible();
     await expect(primaryButton).toHaveClass(/primary-btn/);
   });
 
-  // Задание 2: Найди неактивную кнопку используя getByRole с указанием disabled состояния
   // Проверь что кнопка видима и действительно disabled
   test('Найти неактивную кнопку по роли и состоянию', async ({ page }) => {
-    const disabledButton = page.locator('[data-todo="disabledButton"]'); // TODO(student): замените на корректный локатор
+    const disabledButton = page.getByRole('button', { name: 'Неактивная кнопка', disabled: true });
     await expect(disabledButton).toBeVisible();
     await expect(disabledButton).toBeDisabled();
   });
 
-  // Задание 3: Найди элемент div с ролью button (не настоящую кнопку)
   // Проверь что элемент видим и содержит текст "Div как кнопка"
   test('Найти div с ролью кнопки', async ({ page }) => {
-    const divButton = page.locator('[data-todo="divButton"]'); // TODO(student): замените на корректный локатор
+    const divButton = page.getByRole('button', { name: 'Div как кнопка' });
     await expect(divButton).toBeVisible();
     await expect(divButton).toHaveText('Div как кнопка');
   });
