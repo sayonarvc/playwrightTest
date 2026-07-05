@@ -54,7 +54,7 @@ test.describe('Сложные случаи для getByLabel()', () => {
   });
 
   test('Найти элемент c скрытым label', async ({ page }) => {
-    const search = page.getByLabel('Поиск...');
+    const search = page.getByLabel('Поиск');
     await expect(search).toHaveAttribute('placeholder', 'Поиск...');
   });
 });
