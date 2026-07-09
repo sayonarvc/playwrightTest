@@ -64,7 +64,7 @@ test.describe('Специальные случаи для getByTestId()', () => 
   });
 
   test('Проверить футер страницы', async ({ page }) => {
-    const footer = page.getByTestId('copyright-text');
+    const footer = page.getByTestId('page-footer');
     const copyright = footer.getByTestId('copyright-text');
     await expect(copyright).toContainText('2023');
   });
