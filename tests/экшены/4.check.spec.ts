@@ -6,37 +6,27 @@ test.describe('Работа с базовыми чекбоксами', () => {
   });
 
   // Тест 1: Проверка и снятие отметки с чекбокса
-  // 1. Найти чекбокс "Подписаться на рассылку" по label
-  // 2. Проверить что чекбокс изначально не выбран
-  // 3. Выбрать чекбокс методом check()
-  // 4. Проверить что статус изменился на "Подписаны"
-  // 5. Снять выбор методом uncheck()
-  // 6. Проверить что статус вернулся к исходному
   test('Изменение состояния чекбокса', async ({ page }) => {
     const newsletterCheckbox = page.getByLabel('Подписаться на рассылку');
     const status = page.locator('#newsletter-status');
 
     await expect(newsletterCheckbox).not.toBeChecked();
-    // твой код
-    await expect(newsletterCheckbox).toBeChecked();
+    await newsletterCheckbox.check();
+    await await expect(newsletterCheckbox).toBeChecked();
     await expect(status).toHaveText('Подписаны');
     await expect(status).toHaveClass(/checked/);
 
-    // твой код
+    await newsletterCheckbox.uncheck();
     await expect(newsletterCheckbox).not.toBeChecked();
     await expect(status).toHaveText('Не подписаны');
   });
 
   // Тест 2: Проверка обязательного чекбокса
-  // 1. Найти обязательный чекбокс условий
-  // 2. Проверить наличие required атрибута
-  // 3. Выбрать чекбокс
-  // 4. Проверить что стал выбранным
   test('Работа с обязательным чекбоксом', async ({ page }) => {
     const termsCheckbox = page.getByLabel('Я принимаю условия соглашения');
 
     await expect(termsCheckbox).toHaveAttribute('required', '');
-    // твой код
+    await termsCheckbox.check();
     await expect(termsCheckbox).toBeChecked();
   });
 });
@@ -47,16 +37,12 @@ test.describe('Сложные сценарии работы с check()', () => {
   });
 
   // Тест 1: Работа с кастомными элементами
-  // 1. Найти чекбокс соглашения с условиями
-  // 2. Проскроллить к контейнеру с условиями
-  // 3. Выбрать чекбокс
-  // 4. Проверить что выбран
   test('Работа с кастомным чекбоксом после скролла', async ({ page }) => {
     const agreeCheckbox = page.getByLabel('Я прочитал и согласен с условиями');
     const tosContainer = page.locator('.tos-container');
 
     await tosContainer.scrollIntoViewIfNeeded();
-    // твой код
+    await agreeCheckbox.check();
     await expect(agreeCheckbox).toBeChecked();
   });
 
@@ -73,7 +59,7 @@ test.describe('Сложные сценарии работы с check()', () => {
     await expect(dynamicCheckbox1).toBeVisible({ timeout: 2000 });
     await expect(dynamicCheckbox2).toBeChecked();
 
-    // твой код
+    await dynamicCheckbox1.check();
     await expect(dynamicCheckbox1).toBeChecked();
     await expect(dynamicCheckbox2).toBeChecked();
   });
