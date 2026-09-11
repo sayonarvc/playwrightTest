@@ -20,14 +20,11 @@ test('1. Проверка изменения URL при навигации', asy
 });
 
 test('2. Проверка URL при программной навигации', async ({ page }) => {
-  const nextToSectionButton = page.getByRole('button', { name: 'Перейти в раздел' });
-  const goToBackButton = page.getByRole('button', { name: 'Вернуться назад' });
-
-  await nextToSectionButton.click();
-  await expect(page).toHaveURL(/.*#contacts$/);
-
-  await goToBackButton.click();
-  await expect(page).toHaveURL(/.*#home/);
+  // Задание: Проверить URL после программного перехода
+  // 1. Нажать кнопку "Перейти в раздел"
+  // 2. Проверить что URL изменился на "#contacts"
+  // 3. Нажать кнопку "Вернуться назад" (back() в истории)
+  // 4. Проверить что URL вернулся к "#home"
 });
 
 test('3. Проверка URL после ручного ввода', async ({ page }) => {
